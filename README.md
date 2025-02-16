@@ -1,4 +1,4 @@
-# Sign-Sight
+# Sign-Speak
 ![image](https://github.com/user-attachments/assets/58b67a83-c902-43c8-950f-78cb4a661562)
 
 ## Inspiration
@@ -11,21 +11,21 @@ We wondered if we could do better. We asked ourselves how we could leverage rece
 
 ## What it does
 
-Sign-Sight is a pair of smartglasses that allow deaf users to translate their ASL signs into spoken audio in real-time. 
+Sign-Speak is a pair of smartglasses that allow deaf users to translate their ASL signs into spoken audio in real-time. 
 
 Most existing solutions focus on translation from the reader's perspective, and to our knowledge there isn't anyone working on translating ASL from the signer's perspective. Evidence for this is the lack of labelled data for back-of-hand ASL signs, which is a challenge that we overcame early in the project (see "Challenges we ran into").
 
-Built with MediaPipe's hand-tracking neural network and hosted on NVIDIA's Jetson Nano, the glasses extract precise hand landmarks, process them through a custom neural network trained on our custom ASL dataset focused only on backside hand movements, and deliver instant voice translations via an attached speaker. Our CV and speech-to-text models are hosted completely **on device**, making Sign-Sight a true Edge AI product pushing the frontiers of accessibility tech. 
+Built with MediaPipe's hand-tracking neural network and hosted on NVIDIA's Jetson Nano, the glasses extract precise hand landmarks, process them through a custom neural network trained on our custom ASL dataset focused only on backside hand movements, and deliver instant voice translations via an attached speaker. Our CV and speech-to-text models are hosted completely **on device**, making Sign-Speak a true Edge AI product pushing the frontiers of accessibility tech. 
 
 Our goal is to empower the deaf community to communicate freely and create a world where every conversation transcends the barriers of sound.
 
 ## How we built it
 
-There weren't any available datasets for back-of-hand ASL signs, so the first step in training our model was to create one. To do so, we developed some [scripts](https://github.com/vkodithala/sign-sight/tree/main/data-collection) that took and labelled nearly 6,000 pictures of our own hands while we were signing the 26 letters of the ASL alphabet (along with some useful stopwords). We then used Google's MediaPipe models to translate these pictures into 21 coordinates representing the joints in the model's hands ("landmarks"). Our last step was to apply random scaling, rotation, and Gaussian noise to the extracted landmarks and train a feed-forward neural network that classifies ASL signs from inputted hand landmark data.
+There weren't any available datasets for back-of-hand ASL signs, so the first step in training our model was to create one. To do so, we developed some [scripts](https://github.com/vkodithala/sign-speak/tree/main/data-collection) that took and labelled nearly 6,000 pictures of our own hands while we were signing the 26 letters of the ASL alphabet (along with some useful stopwords). We then used Google's MediaPipe models to translate these pictures into 21 coordinates representing the joints in the model's hands ("landmarks"). Our last step was to apply random scaling, rotation, and Gaussian noise to the extracted landmarks and train a feed-forward neural network that classifies ASL signs from inputted hand landmark data.
 
 The brains of our operation rely on the small but powerful NVIDIA Jetson Orin Nano upon which our computer vision model runs, allowing our users to use SignSight wherever they want. We packaged our image classification model into a .onnx file and uploaded it onto our Jetson to run inference. The Jetson itself is connected to a webcam that captures input, passes it through the model to detect what letters the user is signing in succession, and then uses [Piper](https://github.com/rhasspy/piper) for on-device text-to-speech translation, sending the audio to a miniature Bluetooth speaker connected to the frames.
 
-We 3D-printed our glasses based on custom CAD designs to allow for the mounting of a webcam in the temple area, and fashioned an elastic band around the back of the frames with a Bluetooth speaker to enable the sound output of the TTS translation. Users are meant to carry the Jetson Nano (which is housed in a custom 3D-printed case) in their pocket, allowing them to use Sign-Sight's technology anywhere on Earth.
+We 3D-printed our glasses based on custom CAD designs to allow for the mounting of a webcam in the temple area, and fashioned an elastic band around the back of the frames with a Bluetooth speaker to enable the sound output of the TTS translation. Users are meant to carry the Jetson Nano (which is housed in a custom 3D-printed case) in their pocket, allowing them to use Sign-Speak's technology anywhere on Earth.
 
 ## Challenges we ran into
 
@@ -44,12 +44,12 @@ As a result, we faced the challenge of developing our dataset and model from scr
 ## What we learned
 While creating SignSight, we learned about developing deep learning models on constrained resources and the tradeoffs associated with developing on small computers. While developing a seamless user experience, we realized that effective assistive technology must blend into daily life without adding complexity. It took thoughtful design choices to decide how a Jetson Nano, speaker, and camera would fit into the form factor of wearable glasses.
 
-## What's next for Sign-Sight
+## What's next for Sign-Speak
 - **Two-way communication.** That is, in addition to a hearing person being able to hear a deaf person, a deaf person should be able to understand a non-signing person by translating speech to text. The text would be displayed in a small OLED display on the lens of SignSight in real time as the microphone picks up on speech. During TreeHacks, we spent time trying to enable two-way communication using these glasses. However, due to the constraints of the specific OLED display we got on our hands on, we weren't able to find any libraries that were compatible for our use case. We even tried to create our own library and modify existing ones—work that will continue past TreeHacks. We aim to finish SignSight's speech to text capability to truly ensure no voice is unheard.
 - **Adding ASL word recognition.** ASL word recognition is a uniquely challenging task because the number of things that you can sign grows far beyond just 26 letters and there are an infinite amount of configurations that you can produce, some of which are in the signer's line of sight and others that aren't. Though we couldn't implement it during this hackathon, our project would be greatly enhanced by training a model capable of recognizing entire words from the ASL vocabulary via a combination of vision models and additional sensors.
 
 ## License 📜
-Copyright 2025 ©Varoon Kodithala, Menul Rao, Arnav Patidar, Vineeth Sendilraj
+Copyright 2025 ©Varoon Kodithala, Mehul Rao, Arnav Patidar, Vineeth Sendilraj
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
