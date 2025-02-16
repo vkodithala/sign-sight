@@ -1,5 +1,5 @@
 # Sign-Speak
-![image](https://github.com/user-attachments/assets/58b67a83-c902-43c8-950f-78cb4a661562)
+![image](https://github.com/user-attachments/assets/dd8cde48-a910-4df7-a0ef-fde7e3dd6d68)
 
 ## Inspiration
 
