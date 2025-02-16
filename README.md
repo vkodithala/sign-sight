@@ -1,5 +1,5 @@
 # Sign-Sight
-*Developed by Varoon Kodithala, Arnav Patidar, Vineeth Sendilraj, and Mehul Rao for TreeHacks 2025.*
+![image](https://github.com/user-attachments/assets/58b67a83-c902-43c8-950f-78cb4a661562)
 
 ## Inspiration
 
@@ -44,6 +44,15 @@ As a result, we faced the challenge of developing our dataset and model from scr
 ## What we learned
 While creating SignSight, we learned about developing deep learning models on constrained resources and the tradeoffs associated with developing on small computers. While developing a seamless user experience, we realized that effective assistive technology must blend into daily life without adding complexity. It took thoughtful design choices to decide how a Jetson Nano, speaker, and camera would fit into the form factor of wearable glasses.
 
-## What's next for Sign-Sight: No voice unheard
+## What's next for Sign-Sight
 - **Two-way communication.** That is, in addition to a hearing person being able to hear a deaf person, a deaf person should be able to understand a non-signing person by translating speech to text. The text would be displayed in a small OLED display on the lens of SignSight in real time as the microphone picks up on speech. During TreeHacks, we spent time trying to enable two-way communication using these glasses. However, due to the constraints of the specific OLED display we got on our hands on, we weren't able to find any libraries that were compatible for our use case. We even tried to create our own library and modify existing ones—work that will continue past TreeHacks. We aim to finish SignSight's speech to text capability to truly ensure no voice is unheard.
 - **Adding ASL word recognition.** ASL word recognition is a uniquely challenging task because the number of things that you can sign grows far beyond just 26 letters and there are an infinite amount of configurations that you can produce, some of which are in the signer's line of sight and others that aren't. Though we couldn't implement it during this hackathon, our project would be greatly enhanced by training a model capable of recognizing entire words from the ASL vocabulary via a combination of vision models and additional sensors.
+
+## License 📜
+Copyright 2025 ©Varoon Kodithala, Menul Rao, Arnav Patidar, Vineeth Sendilraj
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
